@@ -43,28 +43,27 @@
 	
 	<script>
 	const initialItems = [
-        {name: "Red Water Bottle", category: "Water Bottles", type: "Lost", date: "2025-11-28", location: "Gym", contact: "contact@example.com", description: "Stainless steel, small scratch on the side.", img: "image/p2.jpeg"},
-        {name: "iPhone 13 (Found)", category: "Electronics", type: "Found", date: "2025-11-29", location: "Library Desk", contact: "admin@example.com", description: "Black case, cracked screen protector.", img: "image/p2.jpeg"},
-        {name: "Black Leather Wallet", category: "Wallet", type: "Lost", date: "2025-11-30", location: "Cafeteria", contact: "user@example.com", description: "Contains student ID, no cash.", img: "image/p2.jpeg"},
+        {name: "Red Water Bottle", category: "Water Bottles", type: "Lost", date: "2025-11-28", location: "Gym", contact: "contact@example.com", description: "Stainless steel, small scratch on the side.", img: "image/p2.jpeg"},
+        {name: "iPhone 13 (Found)", category: "Electronics", type: "Found", date: "2025-11-29", location: "Library Desk", contact: "admin@example.com", description: "Black case, cracked screen protector.", img: "image/p2.jpeg"},
+        {name: "Black Leather Wallet", category: "Wallet", type: "Lost", date: "2025-11-30", location: "Cafeteria", contact: "user@example.com", description: "Contains student ID, no cash.", img: "image/p2.jpeg"},
         {name: "Car Keys", category: "Keychain", type: "Lost", date: "2025-12-01", location: "Parking Lot", contact: "keyuser@example.com", description: "Hyundai fob with fuzzy blue keychain.", img: "image/p2.jpeg"},
         {name: "Student ID Card", category: "IDs", type: "Found", date: "2025-12-01", location: "Admin Office", contact: "admin@example.com", description: "ID for John Doe, Class of 2026.", img: "image/p2.jpeg"},
-    ];
-    
-    function loadDynamicItems() {
-        const storedItems = localStorage.getItem('submittedReports');
-        try {
-            return storedItems ? JSON.parse(storedItems) : [];
-        } catch (e) {
-            console.error("Error parsing stored reports:", e);
-            return [];
-        }
-    }
-
-    const dynamicItems = loadDynamicItems();
-
-    const allItems = [...initialItems, ...dynamicItems];
+	];
     
-    // Function to initialize Swiper after content is rendered
+    function loadDynamicItems() {
+        const storedItems = localStorage.getItem('submittedReports');
+        try {
+            return storedItems ? JSON.parse(storedItems) : [];
+        } catch (e) {
+            console.error("Error parsing stored reports:", e);
+            return [];
+        }
+    }
+
+    const dynamicItems = loadDynamicItems();
+
+    const allItems = [...initialItems, ...dynamicItems];
+    
     function initSwiper() {
         new Swiper('.swiper-container-custom', {
             loop: true,
@@ -98,7 +97,7 @@
 	function searchItems() {
         const text = document.getElementById("searchInput").value.toLowerCase();
         const category = document.getElementById("categoryInput").value;
-        const gridContainer = document.getElementById("swiperGridContainer"); // Updated ID
+        const gridContainer = document.getElementById("swiperGridContainer");
 
         const results = allItems.filter(item =>
             (item.name.toLowerCase().includes(text) || item.description.toLowerCase().includes(text)) &&
@@ -110,7 +109,6 @@
             return;
         }
 
-        // Build the HTML for the Swiper list
         const listHTML = results.map(item => {
             const badgeText = `${item.type} - ${item.category}`;
             
@@ -128,7 +126,6 @@
             `;
         }).join('');
 
-        // Full Swiper structure
         const swiperHTML = `
             <div class="card-wrapper swiper swiper-container-custom">
                 <ul class="card-list swiper-wrapper">
@@ -142,7 +139,6 @@
         
         gridContainer.innerHTML = swiperHTML;
         
-        // Re-initialize Swiper after content insertion
         initSwiper();
 	}
 
@@ -150,8 +146,8 @@
 
 	</script>
 
-      <style>
-    /* Tailwind Config CSS */
+    
+  <style>
     .material-icons { font-size: inherit; }
 	body {
  	font-family: 'Quicksand', sans-serif;
@@ -199,8 +195,6 @@
 	outline: none;
 	}
 
-    /* Custom Card/Swiper CSS from the provided code */
-    
     .container {
         margin-top: 2rem !important;
     }
@@ -225,7 +219,7 @@
     .card-list .card-item .card-link {
         user-select: none;
         display: block;
-        background: #3c67ca; /* Fixed color based on Swiper code context */
+        background: #3c67ca;
         padding: 18px;
         border-radius: 12px;
         text-decoration: none;
@@ -239,7 +233,7 @@
     }
     
     .card-list .card-item .card-link:hover{
-        border-color: #4f46e5; /* Using primary color for consistency */
+        border-color: #4f46e5;
     }
     .card-list .card-link .card-image {
         width: 100%;
@@ -261,7 +255,7 @@
     
     .card-list .card-link .card-title {
         font-size: 1.19rem;
-        color: white; /* Changed to white for contrast on blue card */
+        color: white;
         font-weight: 600;
     }
     
@@ -276,25 +270,25 @@
         border: 2px solid rgb(255, 255, 255);
         transform: rotate(-45deg);
         transition: 0.4s ease;
-        font-size: 1.25rem; /* Adjust icon size */
+        font-size: 1.25rem;
     }
     
     .card-list .card-link:hover .card-button {
         color: white;
-        background: #4f46e5; /* Using primary color for consistency */
+        background: #4f46e5;
     }
     
     .card-wrapper .swiper-pagination-bullet {
         height: 13px;
         width: 13px;
         opacity: 0.5;
-        background: #4f46e5; /* Using primary color for consistency */
+        background: #4f46e5;
     }
     .card-wrapper .swiper-pagination-bullet-active {
         opacity: 1;
     }
     .card-wrapper .swiper-slide-button {
-        color: #4f46e5; /* Using primary color for consistency */
+        color: #4f46e5;
         margin-top: -35px;
     }
     
@@ -366,13 +360,13 @@
                 </select>
                 <button onclick="searchItems()">Search</button>
             </div>
-                        <div id="swiperGridContainer" class="container"></div>
+            <div id="swiperGridContainer" class="container"></div>
         </div>
     </main>
 
     <footer class="bg-slate-100 text-slate-600 py-10 px-4 sm:px-6 mt-12">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <h3 class="font-bold text-slate-800 mb-4">Site</h3>
                     <ul class="space-y-2 text-sm">
@@ -380,26 +374,6 @@
                         <li><a class="hover:text-primary" href="report_form.html">Report Lost & Found</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="font-bold text-slate-800 mb-4">Help</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a class="hover:text-primary" href="#">Customer Support</a></li>
-                        <li><a class="hover:text-primary" href="#">Terms & Conditions</a></li>
-                        <li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-800 mb-4">Social</h3>
-                    <div class="flex space-x-4">
-                        <a class="text-slate-500 hover:text-primary" href="#">
-                            <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAByeQqp4mysv-jWU3S5YuDIhINoUmuj-496S2jcjg6rgfbbghuAEruBd78vEhs0bl9VQK7qMyxxUDxvdGRs9CtG9GKyFWAKvmywHrSzVdALrly92o1_EZfvq2yY7aPNx31BNmCjJkBL5tp3rw-XZk3uICIKbTdN9PCLnlONgV2avWN7Po68YtXHE3rMt"
-                            alt="social media X icon"
-                            class="w-6 h-6"
-                            />
-                        </a>
-                    </div>
-                </div>
                 
                 </div>
             </div>
