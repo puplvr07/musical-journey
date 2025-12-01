@@ -6,12 +6,12 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 	<title>Lost & Found - Search</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward"/>
 
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet"/>
 
 	<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 
@@ -44,7 +44,7 @@
 	<script>
 	const initialItems = [
         {name: "Red Water Bottle", category: "Water Bottles", type: "Lost", date: "2025-11-28", location: "Gym", contact: "contact@example.com", description: "Stainless steel, small scratch on the side.", img: "image/p2.jpeg"},
-        {name: "iPhone 13 (Found)", category: "Electronics", type: "Found", date: "2025-11-29", location: "Library Desk", contact: "admin@example.com", description: "Black case, cracked screen protector.", img: "image/p2.jpeg"},
+        {name: "iPhone 13", category: "Electronics", type: "Found", date: "2025-11-29", location: "Library Desk", contact: "admin@example.com", description: "Black case, cracked screen protector.", img: "image/p2.jpeg"},
         {name: "Black Leather Wallet", category: "Wallet", type: "Lost", date: "2025-11-30", location: "Cafeteria", contact: "user@example.com", description: "Contains student ID, no cash.", img: "image/p2.jpeg"},
         {name: "Car Keys", category: "Keychain", type: "Lost", date: "2025-12-01", location: "Parking Lot", contact: "keyuser@example.com", description: "Hyundai fob with fuzzy blue keychain.", img: "image/p2.jpeg"},
         {name: "Student ID Card", category: "IDs", type: "Found", date: "2025-12-01", location: "Admin Office", contact: "admin@example.com", description: "ID for John Doe, Class of 2026.", img: "image/p2.jpeg"},
@@ -88,8 +88,11 @@
                     slidesPerView: 2
                 },
                 1024: {
-                    slidesPerView: 3
+                    slidesPerView: 4 
                 },
+                1400: {
+                    slidesPerView: 4
+                }
             }
         });
     }
@@ -147,10 +150,10 @@
 	</script>
 
     
-  <style>
-    .material-icons { font-size: inherit; }
+<style>
+    .material-icons { font-size: inherit; }
 	body {
- 	font-family: 'Quicksand', sans-serif;
+	font-family: 'Quicksand', sans-serif;
 	background: #f8fafc;
 	}
 
@@ -184,11 +187,11 @@
 	}
 
 	.search button:hover {
-      background: #6366f1;
+	background: #6366f1;
 	}
 
 	.search select {
- 	padding: 10px 45px;
+	padding: 10px 45px;
 	font-size: 20px;
 	border: 1px solid #bfbfbf;
 	border-radius: 6px;
@@ -210,6 +213,7 @@
         margin: 0 60px 35px;
         padding: 20px 10px;
         overflow: hidden;
+        padding-bottom: 30px; 
     }
     
     .card-list .card-item{
@@ -219,7 +223,7 @@
     .card-list .card-item .card-link {
         user-select: none;
         display: block;
-        background: #3c67ca;
+        background: #4f46e5; 
         padding: 18px;
         border-radius: 12px;
         text-decoration: none;
@@ -243,12 +247,12 @@
     }
     
     .card-list .card-link .badge {
-        color: #5372F0;
+        color: white; 
         padding: 8px 16px;
         font-size: 0.95rem;
         font-weight: 500;
         margin: 16px 0 18px;
-        background: #DDE4FF;
+        background: rgba(255, 255, 255, 0.2); 
         width: fit-content;
         border-radius: 50px;
     }
@@ -286,7 +290,9 @@
     }
     .card-wrapper .swiper-pagination-bullet-active {
         opacity: 1;
+        margin-top: 15px; 
     }
+    
     .card-wrapper .swiper-slide-button {
         color: #4f46e5;
         margin-top: -35px;
