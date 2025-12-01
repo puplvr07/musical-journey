@@ -117,13 +117,6 @@
                             <div class="card-overlay">
                                 <div class="card-details">
                                     <div class="detail-item">
-                                        <span class="material-icons detail-icon">location_on</span>
-                                        <div>
-                                            <p class="detail-label">Location</p>
-                                            <p class="detail-value">${item.location}</p>
-                                        </div>
-                                    </div>
-                                    <div class="detail-item">
                                         <span class="material-icons detail-icon">event</span>
                                         <div>
                                             <p class="detail-label">Date ${item.type === 'Lost' ? 'Lost' : 'Found'}</p>
@@ -149,6 +142,10 @@
                         </div>
                         <p class="badge">${badgeText}</p>
                         <h2 class="card-title">${item.name}</h2>
+                        <div class="location-info">
+                            <span class="material-icons location-icon">location_on</span>
+                            <span class="location-text">${item.location}</span>
+                        </div>
                         <button class="card-button material-symbols-rounded">
                             arrow_forward
                         </button>
@@ -398,10 +395,32 @@
             font-size: 1.25rem;
             color: white;
             font-weight: 600;
-            margin-bottom: auto; 
+            margin-bottom: 12px;
             display: block !important;
             opacity: 1 !important;
             visibility: visible !important;
+        }
+        
+        .location-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            margin-bottom: 20px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .location-icon {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .location-text {
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         .card-list .card-link .card-button {
@@ -409,7 +428,7 @@
             width: 35px;
             color: white;
             border-radius: 50%;
-            margin: 30px 0 5px;
+            margin-top: auto;
             background: rgba(255, 255, 255, 0.2);
             cursor: pointer;
             border: 2px solid rgba(255, 255, 255, 0.4);
@@ -540,6 +559,15 @@
             
             .detail-value {
                 font-size: 0.85rem;
+            }
+            
+            .location-info {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .location-icon {
+                font-size: 16px;
             }
         }
 
