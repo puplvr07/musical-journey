@@ -136,8 +136,9 @@
                                             <p class="detail-label">Description</p>
                                             <p class="detail-value">${item.description}</p>
                                         </div>
+                                    </div>
                                     <div class="detail-item">
-                                        <span class="material-icons detail-icon">contact</span>
+                                        <span class="material-icons detail-icon">email</span>
                                         <div>
                                             <p class="detail-label">Contact</p>
                                             <p class="detail-value">${item.contact}</p>
@@ -398,6 +399,9 @@
             color: white;
             font-weight: 600;
             margin-bottom: auto; 
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
         
         .card-list .card-link .card-button {
@@ -413,11 +417,13 @@
             transition: 0.4s ease;
             font-size: 1.25rem;
             align-self: flex-start;
-            display: flex;
+            display: flex !important;
             align-items: center;
             justify-content: center;
             position: relative;
             z-index: 2;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
         
         .card-list .card-link:hover .card-button {
