@@ -1,256 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Lost & Found - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-  <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                DEFAULT: "#4f46e5",
-                light: "#6366f1",
-              },
-              secondary: "#ec4899",
-              "background-light": "#f8fafc",
-            },
-            fontFamily: {
-              display: ["Quicksand", "sans-serif"],
-            },
-            borderRadius: {
-              DEFAULT: "0.5rem",
-              xl: '1rem',
-            },
-          },
-        },
-      };
-  </script>
-  <style>
-      .material-icons { font-size: inherit; }
-      body {
-        font-family: 'Quicksand', sans-serif;
-        background-color: #f8fafc;
-        min-height: 100vh;
-        background-image:
-          radial-gradient(circle at 100% 0, rgba(236, 72, 153, 0.1), transparent 30%),
-          radial-gradient(circle at 0 100%, rgba(79, 70, 229, 0.1), transparent 30%);
-      }
-      .hero-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 80vh;
-        position: relative;
-        overflow: hidden;
-        padding: 2rem;
-        background-color: gray;
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+  <title>Lost & Found</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+
+  <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#4f46e5", // Indigo-600
+                light: "#6366f1", // Indigo-500
+              },
+              secondary: "#ec4899", // Pink-500
+              "background-light": "#f8fafc", // Slate-50
+            },
+            fontFamily: {
+              display: ["Quicksand", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem", // 8px
+              xl: '1rem',
+            },
+          },
+        },
+      };
+  </script>
+
+
+  <style>
+      .material-icons {
+        font-size: inherit;
       }
-      .magnifier-bg {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(30%, -50%);
-        width: 60%;
-        max-width: 500px;
-        height: 60%;
-        max-height: 500px;
-        z-index: 0;
-        opacity: 0.1;
-        pointer-events: none;
+      body {
+        min-height: max(884px, 100dvh);
+        background-image:
+          radial-gradient(circle at 100% 0, rgba(236, 72, 153, 0.1), transparent 30%),
+          radial-gradient(circle at 0 100%, rgba(79, 70, 229, 0.1), transparent 30%);
       }
-      .magnifier-icon {
-        font-size: 100%;
-        color: #94a3b8;
+      body {
+        min-height: max(884px, 100dvh);
       }
-  </style>
+  </style>
+
+
 </head>
 
-<body class="font-display">
+
+<body class="font-display bg-background-light ">
+
 
   <div class="flex flex-col min-h-screen" id="app">
 
-    <header class="p-4 sm:px-6 flex justify-between items-center bg-background-light/80 backdrop-blur-sm sticky top-0 z-20 border-b border-slate-200">
-        <div class="flex items-center space-x-2">
-            <span class="material-icons text-primary text-3xl">fmd_good</span>
-            <span class="font-bold text-xl">Lost and Found</span>
-        </div>
-        
-        <nav class="hidden md:flex items-center space-x-6">
-            <a class="text-primary hover:text-primary transition-colors font-bold" href="index.html">Home</a>
-            <a class="text-slate-600 hover:text-primary transition-colors font-medium" href="search_listing.html">Lost and Found Items</a>
-            <a class="text-slate-600 hover:text-primary transition-colors font-medium" href="report_form.html">Create a Post</a>
-        </nav>
 
-        <button class="p-2 rounded-full hover:bg-slate-200 md:hidden" id="menu-button">
-            <span class="material-icons text-3xl">menu</span>
-        </button>
-    </header>
+  <!-- HEADER -->
+  <header class="p-4 sm:px-6 flex justify-between items-center bg-background-light/80 backdrop-blur-sm sticky top-0 z-20 border-b border-slate-200">
+   
+    <div class="flex items-center space-x-2">
+      <span class="material-icons text-primary text-3xl">fmd_good</span>
+      <span class="font-bold text-xl">Lost and Found</span>
+    </div>
+   
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center space-x-6">
+      <a class="text-slate-600  hover:text-primary transition-colors font-medium" href="#">Home</a>
+      <a class="text-slate-600  hover:text-primary transition-colors font-medium" href="#">Lost Items</a>
+      <a class="text-slate-600  hover:text-primary transition-colors font-medium" href="#">Found Items</a>
+      <a class="text-slate-600  hover:text-primary transition-colors font-medium" href="#">Create a Post</a>
+    </nav>
 
-    <div class="fixed inset-0 bg-background-light z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" id="mobile-menu">
-        <div class="flex justify-between items-center p-4 border-b border-slate-200 ">
-            <div class="flex items-center space-x-2">
-                <span class="material-icons text-primary text-3xl">fmd_good</span>
-                <span class="font-bold text-xl">Lost and Found</span>
-            </div>
-            <button class="p-2 rounded-full hover:bg-slate-200 " id="close-menu-button">
-                <span class="material-icons text-3xl">close</span>
-            </button>
-        </div>
-        <nav class="flex flex-col p-4 space-y-4">
-            <a class="block px-4 py-3 rounded-lg text-lg text-primary hover:bg-slate-100 font-bold" href="index.html">Home</a>
-            <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="search_listing.html">Lost Items</a>
-            <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="search_listing.html">Found Items</a>
-            <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="report_form.html">Create a Post</a>
-        </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="p-2 rounded-full hover:bg-slate-200 md:hidden" id="menu-button">
+      <span class="material-icons text-3xl">menu</span>
+    </button>
+
+
+  </header>
+
+
+  <!-- MOBILE MENU -->
+  <div class="fixed inset-0 bg-background-light z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" id="mobile-menu">
+ 
+    <div class="flex justify-between items-center p-4 border-b border-slate-200 ">
+      <div class="flex items-center space-x-2">
+        <span class="material-icons text-primary text-3xl">fmd_good</span>
+        <span class="font-bold text-xl">Lost and Found</span>
+      </div>
+   
+      <button class="p-2 rounded-full hover:bg-slate-200 " id="close-menu-button">
+        <span class="material-icons text-3xl">close</span>
+      </button>
     </div>
 
-    <main class="flex-grow">
-      
-      <div class="hero-section">
-        
-        <div class="magnifier-bg hidden md:block">
-            <span class="material-icons magnifier-icon text-[35rem]">search</span>
-        </div>
 
-        <div class="relative z-10 w-full max-w-7xl mx-auto">
-            <div class="max-w-md mx-auto sm:mx-0">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-3 text-slate-900">Find What's Lost,</h1>
-                <h2 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text mb-4">Unite What's Found</h2>
-                <p class="text-slate-600 mb-12">
-                    Our community-driven platform makes it simple to report and recover lost items.
+    <nav class="flex flex-col p-4 space-y-4">
+      <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="#">Home</a>
+      <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="#">Lost Items</a>
+      <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="#">Found Items</a>
+      <a class="block px-4 py-3 rounded-lg text-lg hover:bg-slate-100" href="#">Create a Post</a>
+    </nav>
+ 
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+    <main class="flex-grow px-4 sm:px-6 py-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row lg:gap-12 items-center">
+
+
+
+
+          <!-- LEFT CONTENT -->
+          <div class="w-full lg:w-3/5">
+              <!-- HERO TEXT -->
+              <section class="text-left mb-12 mt-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-3 text-slate-900">Find What's Lost,</h1>
+                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text mb-4">Unite What's Found</h2>
+                <p class="text-slate-600 max-w-md">
+                  Our community-driven platform makes it simple to report and recover lost items.
                 </p>
+              </section>
 
-                <div class="grid grid-cols-2 gap-4 max-w-md mb-6">
-                    <a class="flex items-center justify-center p-3 bg-secondary/10 text-secondary rounded-xl shadow-md hover:shadow-lg transition-shadow" 
-                        href="search_listing.html">
-                        <span class="material-icons text-xl mr-2">search</span>
-                        <span class="text-base font-medium">I Lost Something</span>
-                    </a>
 
-                    <a class="flex items-center justify-center p-3 bg-primary/10 text-primary rounded-xl shadow-md hover:shadow-lg transition-shadow" 
-                        href="report_form.html">
-                        <span class="material-icons text-xl mr-2">location_on</span>
-                        <span class="text-base font-medium">I Found Something</span>
-                    </a>
-                </div>
+              <!-- ACTION BUTTONS -->
+              <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <a class="flex items-center justify-center p-3 bg-secondary/10 text-secondary rounded-xl shadow-sm hover:shadow-md transition-shadow" href="search_listing.html">
+                  <span class="material-icons text-3xl mr-4">search</span>
+                  <span class="text-lg font-medium">I Lost Something</span>
+              </section>
 
-                <a class="w-full bg-primary text-white font-medium py-3 px-6 rounded-xl shadow-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all flex items-center justify-center space-x-2 max-w-md"
-                    href="report_form.html">
+
+              <!-- CREATE POST -->
+             <section class="space-y-4 mb-12">
+                <a class="w-full bg-primary text-white font-medium py-4 px-6 rounded-xl shadow-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all flex items-center justify-center space-x-2" 
+                   href="report_form.html">
                     <span class="material-icons">add_circle_outline</span>
                     <span>Create a Post</span>
                 </a>
+            </section>
+          </div>
+
+
+            <div class="w-full lg:w-2/5 flex justify-center items-center">
+                <span class="material-icons text-[25rem] text-slate-300 ml-10 mb-5 hidden lg:block">search</span>
             </div>
+
+
         </div>
       </div>
-      
-      <section class="bg-white py-12 w-full">
-        <section class="max-w-4xl mx-auto px-4 sm:px-6">
-          <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-slate-900">How It Works</h2>
-            <p class="text-slate-600 mt-2">A simple process to reunite you with your items.</p>
-          </div>
+    </main>
 
-          <div class="space-y-8 relative">
-            <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-200"></div>
-        
-              <div class="flex items-start space-x-4 relative z-10">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                  <span class="material-icons text-2xl">description</span>
-                </div>
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-900">Step 1: Report Item</h3>
-                  <p class="text-slate-600 mt-1">Fill out a simple form describing the item you lost or found.</p>
-                </div>
-              </div>
 
-              <div class="flex items-start space-x-4 relative z-10">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                  <span class="material-icons text-2xl">saved_search</span>
-                </div>
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-900 ">Step 2: Check List</h3>
-                  <p class="text-slate-600 mt-1">Search the continuously updated list of reported lost and found items.</p>
-                </div>
-              </div>
 
-              <div class="flex items-start space-x-4 relative z-10">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                  <span class="material-icons text-2xl">notifications_active</span>
-                </div>
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-900 ">Step 3: Get Notified</h3>
-                  <p class="text-slate-600 mt-1">You receive email or SMS alerts when a match is found (Simulated).</p>
-                </div>
-              </div>
 
-              <div class="flex items-start space-x-4 relative z-10">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                  <span class="material-icons text-2xl">diversity_3</span>
-                </div>
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-900">Step 4: Reconnect</h3>
-                  <p class="text-slate-600 mt-1">We help securely connect owners and finders.</p>
-                </div>
-              </div>
-          </div>
-        </section>
-      </section>
+            <!-- HOW IT WORKS -->
+          <section class="bg-white py-8 w-full">
+            <section class="max-w-4xl mx-auto">
+              <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">How It Works</h2>
+                <p class="text-slate-600 mt-2">A simple process to reunite you with your items.</p>
+              </div>
 
-    <footer class="bg-slate-100 text-slate-600 py-10 px-4 sm:px-6 mt-12">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="font-bold text-slate-800 mb-4">Site</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a class="hover:text-primary" href="search_listing.html">Lost</a></li>
-                        <li><a class="hover:text-primary" href="search_listing.html">Found</a></li>
-                        <li><a class="hover:text-primary" href="report_form.html">Report Lost & Found</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-800 mb-4">Help</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a class="hover:text-primary" href="#">Customer Support</a></li>
-                        <li><a class="hover:text-primary" href="#">Terms & Conditions</a></li>
-                        <li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-800 mb-4">Social</h3>
-                    <div class="flex space-x-4">
-                        <a class="text-slate-500 hover:text-primary" href="#">
-                            <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAByeQqp4mysv-jWU3S5YuDIhINoUmuj-496S2jcjg6rgfbbghuAEruBd78vEhs0bl9VQK7qMyxxUDxvdGRs9CtG9GKyFWAKvmywHrSzVdALrly92o1_EZfvq2yY7aPNx31BNmCjJkBL5tp3rw-XZk3uICIKbTdN9PCLnlONgV2avWN7Po68YtXHE3rMt"
-                            alt="social media X icon"
-                            class="w-6 h-6"
-                            />
-                        </a>
+
+              <div class="space-y-8 relative">
+                <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-200"></div>
+       
+
+
+                  <!-- Steps -->
+                  <!-- Step 1 -->
+                  <div class="flex items-start space-x-4 relative z-10">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10  text-primary flex items-center justify-center">
+                      <span class="material-icons text-2xl">description</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+                    <div>
+                      <h3 class="text-lg font-semibold text-slate-900">Step 1: Report Item</h3>
+                      <p class="text-slate-600   mt-1">Fill out a simple form describing the item you lost or found.</p>
+                    </div>
+                  </div>
 
+
+                  <!-- Step 2 -->
+                  <div class="flex items-start space-x-4 relative z-10">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10  text-primary flex items-center justify-center">
+                      <span class="material-icons text-2xl">saved_search</span>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-slate-900 ">Step 2: We Search</h3>
+                      <p class="text-slate-600   mt-1">Our system finds potential matches using your item details.</p>
+                    </div>
+                  </div>
+
+
+                  <!-- Step 3 -->
+                  <div class="flex items-start space-x-4 relative z-10">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10  text-primary flex items-center justify-center">
+                      <span class="material-icons text-2xl">notifications_active</span>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-slate-900 ">Step 3: Get Notified</h3>
+                      <p class="text-slate-600   mt-1">You receive email or SMS alerts when a match is found.</p>
+                    </div>
+                  </div>
+
+
+                  <!-- Step 4 -->
+                  <div class="flex items-start space-x-4 relative z-10">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10  text-primary flex items-center justify-center">
+                      <span class="material-icons text-2xl">diversity_3</span>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-slate-900">Step 4: Reconnect</h3>
+                      <p class="text-slate-600   mt-1">We help securely connect owners and finders.</p>
+                    </div>
+                  </div>
+               
+              </div>
+            </section>
+          </section>
+
+
+
+
+<footer class="bg-slate-100 text-slate-600   py-10 px-4 sm:px-6 mt-12">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+
+
+      <div>
+        <h3 class="font-bold text-slate-800 mb-4">Site</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-primary" href="search_listing.html">Lost & Found Items</a></li>
+          <li><a class="hover:text-primary" href="report_form.html">Report Lost & Found</a></li>
+        </ul>
+      </div>
+          
     </div>
+  </div>
+</footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.getElementById('menu-button');
-            const closeMenuButton = document.getElementById('close-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuButton.addEventListener('click', function() {
-                mobileMenu.classList.remove('-translate-x-full');
-            });
-            closeMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.add('-translate-x-full');
-            });
+
+
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+
+        menuButton.addEventListener('click', function() {
+          mobileMenu.classList.remove('-translate-x-full');
         });
-    </script>
+        closeMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.add('-translate-x-full');
+        });
+      });
+  </script>
+
+
 </body>
 </html>
+
+
+
